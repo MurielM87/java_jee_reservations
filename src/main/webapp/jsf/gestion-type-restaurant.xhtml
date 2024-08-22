@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:my="jakarta.faces.component"
+        xmlns:fn="jakarta.tags.functions">
+<f:metadata> <!--JSF charge dans metadata-->
+    <!--récupérer l'id pour le mettre dans l'url -->
+    <f:viewParam name="id" value="#{typeRestaurantFaceBean.id}"/>
+    <!-- pour charger la page-->
+    <f:viewAction action="#{typeRestaurantFaceBean.onLoad}"/>
+</f:metadata>
+<h:head> <!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+    <link rel="stylesheet" href="css/style.css"/>
+</h:head>
+<h:body>
+    <h1>Gestion des restaurants</h1>
+    <!--chaine les attributs - voir la méthode onLoad de typeRestaurantFaceBean -->
+    <div>J'ai chargé un type de restaurant avec l'id : #{typeRestaurantFaceBean.typeRestaurantFormBean.id}</div>
+    <div>Aujourd'hui : #{clientFaceBean.dateCourante}</div>
+    <a href="welcome.jsf">lien retour vers page welcome</a>
+
+    <h:form prependId="false">
+        <h2>Type de restaurant</h2>
+        <p>
+            <label for="id">Id :</label>
+            <br/>
+            <h:inputText id="id" type="text"
+                         placeholder="id" value="#{typeRestaurantFaceBean.typeRestaurantFormBean.id}"
+                         required="required" title="id"/>
+        </p>
+        <p>
+            <label for="nom">Value :</label>
+            <br/>
+            <h:inputText id="nom" type="text"
+                         placeholder="value" value="#{typeRestaurantFaceBean.typeRestaurantFormBean.nom}"
+                         required="required" title="Value"/>
+        </p>
+        <p>
+            <h:commandButton value="Sauvegarder" action="#{typeRestaurantFaceBean.save}" />
+        </p>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:my="jakarta.faces.component"
+        xmlns:fn="jakarta.tags.functions">
+
+<h:head>
+    <title>Affichage des Clients</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</h:head>
+<h:body>
+    <h1>Affichage des clients</h1>
+    <h:dataTable var="client"
+                 value="#{clientFaceBean.clients}">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{client.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nom"/>
+            </f:facet>
+            <h:outputText value="#{client.nom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Prenom"/>
+            </f:facet>
+            <h:outputText value="#{client.prenom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Email"/>
+            </f:facet>
+            <h:outputText value="#{client.email}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nombre"/>
+            </f:facet>
+            <h:outputText value="#{client.nombre}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="false"/>
+            </f:facet>
+            <h:outputText value="#{client.check}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Lien Formulaire"/>
+            </f:facet>
+            <h:outputLink value="page-client.jsf?id=#{client.id}" >lien</h:outputLink>
+        </h:column>
+    </h:dataTable>
+
+    <a href="welcome.jsf">Retour accueil</a>
+    <br/>
+    <a href="page-client.xhtml">Retour formulaire</a>
+
+
+</h:body>
+</html>

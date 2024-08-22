@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:my="jakarta.faces.component"
+        xmlns:fn="jakarta.tags.functions">
+<h:head> <!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+    <link rel="stylesheet" href="css/style.css"/>
+</h:head>
+<h:body>
+    <!--<div>Salut !</div>
+    <div>Ici un message de JSF : #{monPremierFaceBean.message}</div>
+    <div>La date du jour : #{monPremierFaceBean.dateCourante}</div> -->
+    <!-- dynamisation de la page avec Expression Language : on appelle monPremierFaceBean.getMessage()
+    -->
+
+    <div>Bonjour</div>
+    <div>Message : #{clientFormBean.message}</div>
+    <div>Aujourd'hui : #{clientFomBean.dateCourante}</div>
+    <div>Message de Session : #{sessionFaceBean.id}</div>
+    <a href="page-2.jsf">lien page 2</a>
+
+    <h:form>
+        <h:commandLink action="${monPremierFaceBean.nextPage}">
+            Cliquez ici pour page2
+        </h:commandLink>
+        <!--soumission de formulaire donc appel à la methode et renvoie identifiant de page //url pas bon-->
+        <!--va déclencher l’action nextPage() et ouvrir la vue renvoyée par cette méthode-->
+    </h:form>
+    <h:form>
+        <h:commandLink action="${monDeuxiemeFaceBean.newPage}">
+            Cliquez ici pour accéder à la nouvelle page 3
+        </h:commandLink>
+    </h:form>
+
+    <h:link value="un lien avec h:link" outcome="page-3">
+        <f:param name="id" value="12"/>
+        <f:param name="name" value="dupont"/>
+    </h:link>
+    <br/>
+    <h:outputLink value="page-3.xhtml">
+        <f:param name="id" value="7"/>
+        Le lien vers la page 3
+    </h:outputLink>
+    <br/>
+    <h:outputLink value="page-client.xhtml">
+        <f:param name="id" value="2"/>
+        Le lien vers la page client id=2
+    </h:outputLink>
+    <br/>
+    <h:outputLink value="page-client.xhtml">
+        Le lien vers la page client
+    </h:outputLink>
+    <br/>
+    <h:outputLink value="affichage-clients.xhtml">
+        Le lien vers la page d'affichage de tous les clients
+    </h:outputLink>
+
+</h:body>
+</html>

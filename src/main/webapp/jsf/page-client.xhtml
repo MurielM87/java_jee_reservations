@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:my="jakarta.faces.component"
+        xmlns:fn="jakarta.tags.functions">
+<f:metadata>
+    <f:viewParam name="id" value="#{clientFaceBean.id}"/>
+    <f:viewAction action="#{clientFaceBean.onLoad}"/>
+</f:metadata>
+<h:head> <!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+    <link rel="stylesheet" href="css/style.css"/>
+</h:head>
+<h:body>
+    <div>Bonjour</div>
+
+    <h:form prependId="false">
+        <h2>Informations du client</h2>
+        <p> <label for="id">Id :</label>
+            <br/>
+            <h:inputText id="id" type="text"
+                         placeholder="id" value="#{clientFaceBean.id}"
+                         required="required" title="id"/>
+            <br/>
+            <h:message for="id"/>
+        </p>
+        <p>
+            <label for="nom">Nom :</label>
+            <br/>
+            <h:inputText id="nom" type="text"
+                         placeholder="nom" value="#{clientFaceBean.clientFormBean.nom}"
+                         required="required" title="Nom"/>
+            <br/>
+            <h:message for="nom" />
+        </p>
+        <p>
+            <label for="prenom">Prenom :</label>
+            <br/>
+            <h:inputText id="prenom" type="text"
+                         placeholder="prenom" value="#{clientFaceBean.clientFormBean.prenom}"
+                         required="required" title="Prenom"/>
+            <br/>
+            <h:message for="prenom" />
+        </p>
+        <p>
+            <label for="email">Email :</label>
+            <br/>
+            <h:inputText id="email" type="text"
+                         placeholder="email" value="#{clientFaceBean.clientFormBean.email}"
+                         required="required" title="Email"/>
+            <br/>
+            <h:message for="email" />
+        </p>
+        <p>
+            <label for="nombre">Nombre :</label>
+            <br/>
+            <h:inputText id="nombre" type="number"
+                        placeholder="nombre" value="#{clientFaceBean.clientFormBean.nombre}"
+                        title="Nombre"/>
+            <br/>
+            <h:message for="nombre" />
+        </p>
+        <p>
+            <h:selectBooleanCheckbox value="#{clientFaceBean.clientFormBean.check}" id="ckeck_remember"/>
+        </p>
+        <p>
+            <h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" />
+        </p>
+        <p>
+            <h:commandButton value="Annuler" action="#{clientFaceBean.cancel}" immediate="true" />
+        </p>
+        <h:messages />
+    </h:form>
+
+    <br/>
+    <h:outputLink value="affichage-clients.xhtml">
+        Le lien vers la page d'affichage de tous les clients
+    </h:outputLink>
+
+
+</h:body>
+</html>
